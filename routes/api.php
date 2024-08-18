@@ -20,4 +20,6 @@ use Illuminate\Support\Facades\Route;
 // });
 
 
-Route::apiResource('products', ProductController::class);
+// Route::apiResource('products', ProductController::class);
+Route::get('products', [ProductController::class, 'index']);
+Route::post('products/store', [ProductController::class, 'store']);

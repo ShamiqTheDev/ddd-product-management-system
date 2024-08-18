@@ -3,15 +3,26 @@
 namespace App\Interfaces\Api;
 
 use App\Application\Services\CreateProductService;
+use App\Application\Services\IndexProductService;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Infrastructure\Persistence\EloquentProduct;
 
 class ProductController extends Controller {
     private CreateProductService $createProductService;
+    private IndexProductService $indexProductService;
 
-    public function __construct(CreateProductService $createProductService) {
+    public function __construct(
+        CreateProductService $createProductService,
+        IndexProductService $indexProductService
+    ) {
         $this->createProductService = $createProductService;
+        $this->indexProductService = $indexProductService;
+    }
+
+    public function index() {
+        $product = $this->indexProductService->execute();
+        return response()->json($product);
     }
 
     public function store(Request $request) {
@@ -19,5 +30,5 @@ class ProductController extends Controller {
         return response()->json($product);
     }
 
-    // Other methods for CRUD (index, show, update, destroy)
+    // Other methods for CRUD (show, update, destroy)
 }
