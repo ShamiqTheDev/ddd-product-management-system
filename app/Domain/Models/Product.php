@@ -3,19 +3,12 @@
 namespace App\Domain\Models;
 
 class Product {
-    private string $id;
     private string $name;
     private float $price;
 
-    public function __construct(string $id, string $name, float $price) {
-        $this->id = $id;
+    public function __construct(string $name, float $price) {
         $this->name = $name;
         $this->price = $price;
-    }
-
-    // Getters and Setters
-    public function getId(): string {
-        return $this->id;
     }
 
     public function getName(): string {

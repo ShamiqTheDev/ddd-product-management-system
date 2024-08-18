@@ -13,11 +13,11 @@ class ProductController extends Controller {
     private IndexProductService $indexProductService;
 
     public function __construct(
+        IndexProductService $indexProductService,
         CreateProductService $createProductService,
-        IndexProductService $indexProductService
     ) {
-        $this->createProductService = $createProductService;
         $this->indexProductService = $indexProductService;
+        $this->createProductService = $createProductService;
     }
 
     public function index() {

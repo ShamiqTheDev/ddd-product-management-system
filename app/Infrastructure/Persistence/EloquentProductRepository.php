@@ -19,7 +19,6 @@ class EloquentProductRepository implements ProductRepository {
 
     public function save(Product $product): void {
         $this->model->updateOrCreate(
-            ['id' => $product->getId()],
             ['name' => $product->getName(), 'price' => $product->getPrice()]
         );
     }

@@ -13,7 +13,7 @@ class CreateProductService {
     }
 
     public function execute(string $name, float $price): Product {
-        $product = new Product(uniqid(), $name, $price);
+        $product = new Product($name, $price);
         $this->productRepository->save($product);
         return $product;
     }
